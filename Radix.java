@@ -1,6 +1,9 @@
 public class Radix {
   public static int Nth(int n, int col) {
-    return ((n / (10 * col)) % 10);
+    if (col < 0) {
+      throw new IllegalArgumentException("column cannot be negative!");
+    }
+    return ((n / (int)Math.pow(10, col)) % 10);
   }
   public static int length(int n) {
     return (n + "").length();
