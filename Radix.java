@@ -47,16 +47,20 @@ public class Radix {
 
   public static void radixSort(SortableLinkedList data) {
     SortableLinkedList negative = new SortableLinkedList();
+    SortableLinkedList positive = new SortableLinkedList();
     for (int i = 0; i < data.size(); i++) {
       if (data.get(i) < 0) {
         negative.add(data.remove(i));
+      } else {
+        positive.add(data.remove(i));
       }
     }
-    radixSortSimple(data);
+    radixSortSimple(positive);
     radixSortSimple(negative);
     for (int j = negative.size() - 1; j > -1; j--) {
       negative.add(negative.remove(j));
     }
-    negative.extend(data);
+    data.extend(negative);
+    data.extend(positive);
   }
 }
