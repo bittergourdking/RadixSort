@@ -10,7 +10,7 @@ public class Radix {
     if (n == 0) {
       return 1;
     }
-    return (n + "").length();
+    return (int)(Math.log10(Math.abs(n)) + 1);
   }
 
   public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
