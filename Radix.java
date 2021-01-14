@@ -25,8 +25,9 @@ public class Radix {
       buckets[i] = new SortableLinkedList();
     }
     for (int j = 0; j < data.size(); j++) {
-      if (length(data.get(j)) > maxLength) {
-        maxLength = length(data.get(j));
+      current = length(data.get(j));
+      if (current > maxLength) {
+        maxLength = current;
       }
       current = data.remove(0);
       buckets[nth(current, 0)].add(current);
