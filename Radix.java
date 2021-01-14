@@ -26,15 +26,12 @@ public class Radix {
     }
     int colNum = 0;
     int maxLength = 0;
-    boolean next = true;
-    while (next) {
-      next = false;
+    while (colNum <= maxLength) {
       while (data.size() > 0) {
         int current = data.remove(0);
         int colDigit = nth(current, colNum);
         buckets[colDigit].add(current);
-        if (length(current) > colNum + 1) {
-          next = true;
+        if (colNum == 0 && length(current) > maxLength) {
           maxLength = length(current);
         }
       }
@@ -49,15 +46,14 @@ public class Radix {
       buckets[i] = new SortableLinkedList();
     }
     int colNum = 0;
-    boolean next = true;
-    while (next) {
-      next = false;
+    int maxLength = 0;
+    while (colNum <= maxLength) {
       while (data.size() > 0) {
         int current = data.remove(0);
         int colDigit = nth(current, colNum) + 9;
         buckets[colDigit].add(current);
-        if (length(current) > colNum + 1) {
-          next = true;
+        if (colNum == 0 && length(current) > maxLength) {
+          maxLength = length(current);
         }
       }
       colNum++;
