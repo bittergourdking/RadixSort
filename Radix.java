@@ -24,20 +24,20 @@ public class Radix {
   for (int i = 0; i < buckets.length; i++) {
     buckets[i] = new SortableLinkedList();
   }
-  int digitNum = 0;
-  boolean yes = true;
-  while (yes) {
-    yes = false;
+  int colNum = 0;
+  boolean next = true;
+  while (next) {
+    next = false;
     while (data.size() > 0) {
       System.out.println(data.get(0));
       int currentNum = data.remove(0);
-      int digitEnd = nth(currentNum, digitNum);
+      int digitEnd = nth(currentNum, colNum);
       buckets[digitEnd].add(currentNum);
-      if (Radix.length(currentNum) > digitNum + 1) {
-        yes = true;
+      if (length(currentNum) > colNum + 1) {
+        next = true;
       }
     }
-    digitNum++;
+    colNum++;
     merge(data, buckets);
   }
 }
@@ -47,19 +47,19 @@ public static void radixSort(SortableLinkedList data) {
   for (int i = 0; i <= 18; i++) {
     buckets[i] = new SortableLinkedList();
   }
-  int digitNum = 0;
-  boolean yes = true;
-  while (yes) {
-    yes = false;
+  int colNum = 0;
+  boolean next = true;
+  while (next) {
+    next = false;
     while (data.size() > 0) {
       int currentNum = data.remove(0);
-      int digitEnd = nth(currentNum, digitNum)+9;
+      int digitEnd = nth(currentNum, colNum)+9;
       buckets[digitEnd].add(currentNum);
-      if (Radix.length(currentNum) > digitNum + 1) {
-        yes = true;
+      if (length(currentNum) > colNum + 1) {
+        next = true;
       }
     }
-    digitNum++;
+    colNum++;
     merge(data, buckets);
   }
 }
