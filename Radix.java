@@ -21,7 +21,7 @@ public class Radix {
 
   public static void radixSortSimple(SortableLinkedList data) {
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    for (int i = 0; i < buckets.length; i++) {
+    for (int i = 0; i < 10; i++) {
       buckets[i] = new SortableLinkedList();
     }
     int colNum = 0;
@@ -43,7 +43,7 @@ public class Radix {
 
   public static void radixSort(SortableLinkedList data) {
     SortableLinkedList[] buckets = new SortableLinkedList[19];
-    for (int i = 0; i <= 18; i++) {
+    for (int i = 0; i < 19; i++) {
       buckets[i] = new SortableLinkedList();
     }
     int colNum = 0;
