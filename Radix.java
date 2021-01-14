@@ -3,7 +3,7 @@ public class Radix {
     if (col < 0) {
       throw new IllegalArgumentException("column cannot be negative!");
     }
-    return ((n / (int)Math.pow(10, col)) % 10);
+    return Math.abs((n / (int)Math.pow(10, col)) % 10);
   }
 
   public static int length(int n) {
@@ -26,7 +26,7 @@ public class Radix {
     }
     for (int j = 0; j < data.size(); j++) {
       if (length(data.get(j)) > maxLength) {
-        maxLength = data.get(j);
+        maxLength = length(data.get(j));
       }
       current = data.remove(0);
       buckets[nth(current, 0)].add(current);
